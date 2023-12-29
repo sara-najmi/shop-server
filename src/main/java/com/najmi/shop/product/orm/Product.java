@@ -30,6 +30,16 @@ public class Product extends GenericEntity {
 
     @Column(name = "is_active")
     private Boolean isActive;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", isActive=" + isActive +
+                '}';
+    }
 }
 
 

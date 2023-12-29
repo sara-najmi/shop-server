@@ -3,9 +3,11 @@ package com.najmi.shop.product.service;
 import com.najmi.shop.product.controller.ProductModel;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface ProductService {
 
-    Page<ProductModel> list() throws Exception;
+    List<ProductModel> list() throws Exception;
 
     ProductModel find(Integer id) throws Exception;
 

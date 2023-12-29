@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -15,4 +16,6 @@ public class ProductModel extends GenericModel {
     private String title;
 
     private BigDecimal price;
+
+    private List<ImageModel> images;
 }

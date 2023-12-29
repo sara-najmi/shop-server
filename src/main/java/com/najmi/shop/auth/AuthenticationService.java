@@ -60,7 +60,7 @@ public class AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         UserModel userModel = new UserModel();
-        BeanUtils.copyProperties(user,userModel);
+        BeanUtils.copyProperties(user, userModel);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
@@ -115,6 +115,25 @@ public class AuthenticationService {
                         .build();
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
+        }
+    }
+
+
+    public UserModel myAccount(HttpServletRequest request,
+                               HttpServletResponse response) {
+        UserModel userModel = new UserModel();
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new RuntimeException();
+        }
+        var userEmail = jwtService.extractUsername(authHeader.substring(7));
+        if (userEmail != null) {
+            var user = this.repository.findByNationalCodeOrUniId(userEmail, userEmail)
+                    .orElseThrow();
+            BeanUtils.copyProperties(user, userModel);
+            return userModel;
+        } else {
+            throw new RuntimeException();
         }
     }
 }

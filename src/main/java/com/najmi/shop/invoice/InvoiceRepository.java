@@ -14,10 +14,10 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Integer> {
     @Query(value = "SELECT COUNT(ID) FROM INVOICE", nativeQuery = true)
     Integer countAll();
 
-    @Query(value = "SELECT COUNT(ID) FROM INVOICE WHERE IS_DELIVERED = 1", nativeQuery = true)
+    @Query(value = "SELECT COUNT(ID) FROM INVOICE WHERE IS_DELIVERED = true", nativeQuery = true)
     Integer countAllDelivered();
 
-    @Query(value = "SELECT COUNT(ID) FROM INVOICE WHERE IS_DELIVERED = 0", nativeQuery = true)
+    @Query(value = "SELECT COUNT(ID) FROM INVOICE WHERE IS_DELIVERED = false", nativeQuery = true)
     Integer countAllNotDelivered();
 
 

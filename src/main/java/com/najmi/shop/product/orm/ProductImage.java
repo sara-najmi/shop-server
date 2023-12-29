@@ -26,5 +26,5 @@ public class ProductImage extends GenericEntity {
 
     @Lob
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 }
