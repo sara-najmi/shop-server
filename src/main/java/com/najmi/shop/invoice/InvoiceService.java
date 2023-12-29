@@ -1,7 +1,5 @@
 package com.najmi.shop.invoice;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 
 public interface InvoiceService {
