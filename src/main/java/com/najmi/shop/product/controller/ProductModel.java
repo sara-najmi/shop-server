@@ -1,4 +1,4 @@
-package com.najmi.shop.product;
+package com.najmi.shop.product.controller;
 
 import com.najmi.shop.utils.GenericModel;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = false)
 public class ProductModel extends GenericModel {
 
-    private Long id;
+    private Integer id;
 
     private String title;
 

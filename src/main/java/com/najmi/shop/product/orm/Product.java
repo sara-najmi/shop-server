@@ -1,4 +1,4 @@
-package com.najmi.shop.product;
+package com.najmi.shop.product.orm;
 
 import com.najmi.shop.utils.GenericEntity;
 import jakarta.persistence.*;
@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -16,13 +17,19 @@ public class Product extends GenericEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "title", unique = true)
     private String title;
 
     @Column(name = "price")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<ProductImage> productImages;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 }
 
 
