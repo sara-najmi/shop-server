@@ -27,4 +27,9 @@ public class ProductImage extends GenericEntity {
     @Lob
     @Column(name = "image")
     private String image;
+
+    public ProductImage(Product product, String image) {
+        this.product = product;
+        this.image = image;
+    }
 }

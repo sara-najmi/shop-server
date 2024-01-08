@@ -1,6 +1,7 @@
 package com.najmi.shop.product.orm;
 
 import com.najmi.shop.utils.GenericEntity;
+import com.najmi.shop.vendor.Vendor;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,6 +31,10 @@ public class Product extends GenericEntity {
 
     @Column(name = "is_active")
     private Boolean isActive;
+
+    @JoinColumn(name = "vendor_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vendor vendor;
 
     @Override
     public String toString() {
