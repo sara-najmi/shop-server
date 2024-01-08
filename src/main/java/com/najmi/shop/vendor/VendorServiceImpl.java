@@ -32,15 +32,19 @@ public class VendorServiceImpl implements VendorService {
     @Transactional(rollbackFor = Exception.class)
     public void fetch() throws Exception {
         String url = BASE_URL + "/marketplace/storeslist/tehran/electronic-devices";
-        Document document = Jsoup.connect(url).get();
+        Document document = Jsoup.connect(url)
+                .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+                .get();
         Elements links = document.select("a[href*=marketplace]");
         for (Element link : links) {
             var vendor = new Vendor();
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             vendor.setTitle(link.select(".kt-event-row__text--title").text());
             vendor.setAddress(link.select(".kt-event-row__text--subtitle").text());
             vendorRepository.save(vendor);
-            Document documentProduct = Jsoup.connect(BASE_URL + link.select("a[href]").attr("href")).get();
+            Document documentProduct = Jsoup.connect(BASE_URL + link.select("a[href]").attr("href"))
+                    .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+                    .get();
             Elements productLinks = documentProduct.select("a[href*=/v]");
             for (Element productLink : productLinks) {
                 var product = new Product();

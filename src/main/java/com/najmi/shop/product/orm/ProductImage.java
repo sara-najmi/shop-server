@@ -24,7 +24,6 @@ public class ProductImage extends GenericEntity {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @Lob
     @Column(name = "image")
     private String image;
 
