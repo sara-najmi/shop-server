@@ -68,6 +68,7 @@ public class ProductServiceImpl implements ProductService {
                 productModel.getImages().add(new ImageModel(productImage.getImage()));
             }
         }
+        productModel.setVendorTitle(product.getVendor().getTitle());
         return productModel;
     }
 }

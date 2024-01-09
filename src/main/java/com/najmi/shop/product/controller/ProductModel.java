@@ -18,4 +18,6 @@ public class ProductModel extends GenericModel {
     private BigDecimal price;
 
     private List<ImageModel> images;
+
+    private String vendorTitle;
 }
