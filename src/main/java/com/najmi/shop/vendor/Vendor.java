@@ -20,4 +20,8 @@ public class Vendor extends GenericEntity {
 
     private String address;
 
+    private String phoneNumber;
+
+    private String link;
+
 }
